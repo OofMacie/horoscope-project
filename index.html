@@ -3,20 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Eagle+Lake&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/cosmicWheel.css" rel="stylesheet">
+    <link href="css/nightSky.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Eagle+Lake&display=swap" rel="stylesheet">
     <title>Horoscope</title>
 </head>
 <body>
-<section class="hero" aria-label="Hey, I'm a hero!">
-    <picture class="hero__background">
-        <img src="Images/tarot.jpg" alt="spread of tarot cards">
-    </picture>
-    <heading class="hero__heading">Illuminate your Future</heading>
-    <div class="hero__subheading">Take a glimpse into your future through horoscope</div>
-</section>
-    
+
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hey, I'm a hero!">
+        <div class="hero-fade-overlay"></div>
+        <h1 class="hero__heading">Illuminate your Future</h1>
+        <div class="hero__subheading">Take a glimpse into your future through horoscope</div>
+    </section>
+
+    <div class="sky">
+        <div class="stars"></div>
+        <div class="stars-cross"></div>
+        <div class="stars-cross-aux"></div>
+
+        <!-- Birthday Input Section -->
+        <section class="birthday">
+            <h2 class="birthday-header">Your future awaits you...</h2>
+            <h3 class="birthday-subheader">Enter birthday below..</h3>
+            <input
+                class="birthday-selector"
+                type="date"
+                id="birthday"
+                name="user-birthday"
+                value="2026-05-19"
+                min="1960-01-01"
+                max="2040-12-31"
+            />
+
+            <div class="scene">
+                <p class="hint">✦ &nbsp; click to illuminate &nbsp; ✦</p>
+
+                <div class="cosmic-wheel" id="wheel">
+
+                    <!-- circular night sky -->
+                    <div class="sky-bg"><canvas id="skyCanvas"></canvas></div>
+
+                    <!-- decorative rings -->
+                    <div class="deco-ring" style="width:372px;height:372px;"></div>
+                    <div class="deco-ring" style="width:302px;height:302px;border-color:rgba(188,137,9,0.28);"></div>
+                    <div class="deco-ring" style="width:236px;height:236px;border-color:rgba(188,137,9,0.35);"></div>
+                    <div class="deco-ring" style="width:166px;height:166px;border-color:rgba(188,137,9,0.42);"></div>
+                    <div class="deco-ring core" style="width:124px;height:124px;"></div>
+
+                    <!-- 12-section division lines -->
+                    <svg class="div-svg" width="380" height="380" viewBox="0 0 380 380" id="divSvg"></svg>
+
+                    <!-- moon phases outer ring (CCW) -->
+                    <div class="moon-ring" id="moonRing"></div>
+
+                    <!-- zodiac glyphs middle ring (CW) -->
+                    <div class="zodiac-ring" id="zodiacRing"></div>
+
+                    <!-- center sun + moon face -->
+                    <div class="center-face">
+                        <svg class="face-svg sun-face-svg" id="sunSvg" width="110" height="110" viewBox="0 0 110 110"></svg>
+                        <svg class="face-svg moon-face-svg" id="moonSvg" width="110" height="110" viewBox="0 0 110 110"></svg>
+                    </div>
+
+                </div>
+
+                <div class="fate-label">
+                    <span id="lb">Illuminate your future</span>
+                    <span id="la">Conceal your fate</span>
+                </div>
+            </div>
+
+            <!-- Zodiac Result Display -->
+            <div class="zodiac-outer">
+                <div class="zodiac-name">
+
+                    <!-- Left Panel: Zodiac Sign Info -->
+                    <div class="zodiac-inner">
+                        <p class="zodiac"></p>
+                        <img
+                            class="zodiac-urania"
+                            src=""
+                            alt=""
+                        >
+                        <div class="pgridright">
+                            <div class="pbox pbox-element">
+                                <p></p>
+                            </div>
+                            <div class="pbox pbox-personality">
+                                <p></p>
+                            </div>
+                            <div class="pbox pbox-love">
+                                <p></p>
+                            </div>
+                            <div class="pbox pbox-career">
+                                <p></p>
+                            </div>
+                            <div class="pbox pbox-future">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Additional Details -->
+                    <div class="zodiac-innerside">
+                        <div class="pgridleft">
+                            <img
+                                class="zodiac-const"
+                                src=""
+                                alt=""
+                            >
+                            <div id="zodiac-name2">
+                                <p class="zodiac2"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+<footer class="modern-footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3 class="footer-logo">Illuminate</h3>
+            <p>Take a glimpse into your future through your personalized horoscope and cosmic wheel.</p>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Features</h4>
+            <ul>
+                <li><a href="#">Cosmic Wheel</a></li>
+                <li><a href="#">Zodiac Insights</a></li>
+                <li><a href="#">Star Chart</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="https://www.codedex.io/javascript/checkpoint-project/horoscope" target="_blank">Codédex</a></li>
+                <li><a href="#">Astrology Guide</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Crafted by © <a href="https://github.com/OofMacie" target="_blank">Macie Shyanne</a></p>
+    </div>
+</footer>
+
+    <script src="js/nightSky.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/cosmicWheel.js"></script>
+
 </body>
 </html>

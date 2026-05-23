@@ -1,0 +1,405 @@
+/* ===========================
+   CSS Variables
+=========================== */
+:root {
+    --hero-header-color:    #9DC7C8;
+    --hero-subheading-color: #B1D2D3;
+    --main-text-color:      #A6252F;
+    --night-deepest:        #080e1a;
+    --night-royal:          #132442;
+    --night-deep:           #0d1a30;
+    --gold-mid:             #bc8909;
+    --gold-light:           #d4a82a;
+    --lunar-beige:          #e8d1b6;
+    --lunar-dim:            #c4b09a;
+    --font-c:               'Cormorant Garamond', Georgia, serif;
+}
+
+/* ===========================
+   Base
+=========================== */
+html {
+    background: hsl(32deg 55% 84%);
+    min-height: 100%;
+}
+
+body {
+    background: transparent;
+    margin: 0;
+    font-family: "Caveat Brush", cursive;
+    overflow-x: hidden;
+}
+
+/* ===========================
+   Hero Section
+=========================== */
+.hero {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../Images/tarot.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--hero-header-color);
+    text-align: center;
+    text-shadow: black 0 0 15px;
+    padding: 6rem 2rem 8rem;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 24, 48, 0)     0%,
+        rgba(13, 24, 48, 0.008) 11%,
+        rgba(13, 24, 48, 0.031) 21%,
+        rgba(13, 24, 48, 0.066) 30%,
+        rgba(13, 24, 48, 0.114) 39%,
+        rgba(13, 24, 48, 0.176) 47%,
+        rgba(13, 24, 48, 0.255) 55%,
+        rgba(13, 24, 48, 0.358) 62%,
+        rgba(13, 24, 48, 0.500) 69%,
+        rgba(13, 24, 48, 0.660) 76%,
+        rgba(13, 24, 48, 0.830) 84%,
+        rgba(13, 24, 48, 0.961) 92%,
+        var(--night-deep)       100%
+    );
+    z-index: 1;
+}
+
+.hero__heading,
+.hero__subheading {
+    position: relative;
+    z-index: 2;
+}
+
+.hero__heading {
+    font-family: "Eagle Lake", serif;
+    font-weight: normal;
+    font-size: 5rem;
+    margin: 0;
+    color: var(--lunar-dim);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+
+}
+#la {
+    font-family: "Eagle Lake", serif;
+    font-weight: normal;
+    font-size: 1rem;
+    margin: 0;
+    color: var(--lunar-dim);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+
+}
+
+.hero__subheading {
+    font-family: "Caveat Brush", cursive;
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: var(--hero-subheading-color);
+}
+
+/* ===========================
+   Birthday Section
+=========================== */
+.birthday {
+    position: relative;
+    z-index: 3;
+    padding: 3rem 2rem 5rem;
+    text-align: center;
+    color: var(--lunar-beige);
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.birthday,
+.birthday-subheader,
+input {
+    font-family: var(--font-c);
+}
+
+.birthday-subheader {
+    color: var(--lunar-dim);
+    padding: 10px;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+input {
+    width: 44%;
+    font-size: 1.4rem;
+    color: var(--main-text-color);
+    border-radius: 6px;
+    border: none;
+}
+
+/* ===========================
+   Zodiac Result Box
+=========================== */
+.zodiac-outer {
+    display: none;
+    border: 2px solid var(--night-deepest);
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--night-royal);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    color: var(--lunar-beige);
+}
+
+.zodiac-name {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.zodiac-inner,
+.zodiac-innerside {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border-color: rgba(188, 137, 9, 0.3);
+    padding: 5px 10px;
+}
+
+.zodiac-inner {
+    justify-content: flex-start;
+    flex: 2;
+    min-width: 0;
+}
+
+.zodiac-innerside {
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+}
+
+.zodiac {
+    margin: 10px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.zodiac-urania {
+    display: block;
+    height: 240px;
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.zodiac-const {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 6px;
+}
+
+.zodiac2 {
+    margin: 2px 1px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+/* ===========================
+   Property Grid
+=========================== */
+.pgridright {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 5px 5px 10px;
+}
+
+.pgridleft {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 5px 5px 10px;
+}
+
+.pbox {
+    flex: 2 2 calc(50% - 8px);
+    border: 3px solid rgba(188, 137, 9, 0.3);
+    border-radius: 10px;
+    color: var(--lunar-beige);
+    padding: 10px 10px 10px 10px;
+    
+}
+
+.pbox:hover {
+    background-color: rgba(188, 137, 9, 0.15);
+}
+
+/* ===========================
+   Responsive — Tablet
+=========================== */
+@media (max-width: 640px) {
+    .hero__heading   { font-size: 2.2rem; }
+    .hero__subheading { font-size: 1.2rem; }
+
+    input { width: 75%; }
+
+    .zodiac-name { flex-direction: column; }
+
+    .zodiac-urania { height: 200px; }
+
+    .zodiac { font-size: 26px; }
+
+    .pbox { flex: 1 1 calc(50% - 8px); }
+}
+
+/* ===========================
+   Responsive — Mobile
+=========================== */
+@media (max-width: 480px) {
+    .hero {
+        padding: 3.5rem 1rem 5rem;
+        min-height: 40vh;
+    }
+    .hero__heading   { font-size: 1.75rem; }
+    .hero__subheading { font-size: 1.05rem; }
+
+    .birthday { padding: 2rem 1rem 3rem; }
+
+    input { width: 90%; }
+
+    .zodiac { font-size: 22px; }
+    .zodiac2 { font-size: 18px; }
+
+    .zodiac-urania { height: 160px; }
+
+    .zodiac-const { width: 140px; height: 140px; }
+
+    .pbox { flex: 1 1 100%; }
+}
+.modern-footer {
+            background-color: var(--night-deepest);
+            color: var(--lunar-dim);
+            padding: 4rem 2rem 1.5rem;
+            font-family: var(--font-c);
+            position: relative; /* Needed for the faded line */
+        }
+
+        /* The Faded Gradient Line (Option A) */
+        .modern-footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(
+                90deg, 
+                transparent 0%, 
+                rgba(188, 137, 9, 0.6) 50%, 
+                transparent 100%
+            );
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr; 
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--night-royal);
+        }
+
+        .footer-brand .footer-logo {
+            color: var(--gold-mid);
+            font-family: "Caveat Brush", cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-brand p {
+            line-height: 1.6;
+            max-width: 320px;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .footer-links h4 {
+            color: var(--lunar-beige);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--lunar-dim);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-bottom a {
+            color: var(--hero-header-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--hero-subheading-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }

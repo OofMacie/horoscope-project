@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Scene ── */
+.scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+}
+
+.hint {
+    font-size: 20px;
+    letter-spacing: 0.18em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(55, 47, 47, 0.5);
+}
+
+/* ── Wheel ── */
+.cosmic-wheel {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sky-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.sky-bg canvas {
+    display: block;
+    width: 380px;
+    height: 380px;
+}
+
+/* ── Decorative Rings ── */
+.deco-ring {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(188, 137, 9, 0.22);
+    pointer-events: none;
+    z-index: 2;
+    transition: border-color 0.6s, box-shadow 0.6s;
+}
+
+.cosmic-wheel.on .deco-ring {
+    border-color: rgba(188, 137, 9, 0.45);
+}
+
+.deco-ring.core {
+    border-width: 1.5px;
+    border-color: rgba(188, 137, 9, 0.5);
+}
+
+.cosmic-wheel.on .deco-ring.core {
+    border-color: var(--gold-light);
+}
+
+/* ── Division Lines SVG ── */
+.div-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ── Spinning Rings ── */
+.moon-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    z-index: 3;
+    animation: spin-ccw 48s linear infinite;
+}
+
+.zodiac-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    z-index: 3;
+    animation: spin-cw 30s linear infinite;
+}
+
+.zodiac-medallion {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.2px solid rgba(212, 168, 42, 0.62);
+    background:
+        radial-gradient(circle at 38% 32%, rgba(26, 58, 99, 0.72), rgba(8, 14, 26, 0.96) 64%),
+        var(--night-deepest);
+    box-shadow:
+        inset 0 0 0 1px rgba(232, 209, 182, 0.08),
+        0 0 14px rgba(188, 137, 9, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zodiac-medallion svg {
+    display: block;
+    filter: drop-shadow(0 0 4px rgba(232, 204, 128, 0.24));
+}
+
+.cosmic-wheel.on .moon-ring   { animation-duration: 6s; }
+.cosmic-wheel.on .zodiac-ring { animation-duration: 3.5s; }
+
+@keyframes spin-cw {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spin-ccw {
+    to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+/* ── Center Face ── */
+.center-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--night-deepest);
+    border: 2px solid var(--gold-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: border-color 0.5s, box-shadow 0.5s;
+    overflow: hidden;
+}
+
+.cosmic-wheel.on .center-face {
+    border-color: var(--gold-light);
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 18px rgba(188, 137, 9, 0.3), 0 0 36px rgba(188, 137, 9, 0.1); }
+    50%       { box-shadow: 0 0 36px rgba(188, 137, 9, 0.55), 0 0 72px rgba(188, 137, 9, 0.2); }
+}
+
+.face-svg {
+    position: absolute;
+    transition: opacity 0.7s, transform 0.7s;
+}
+
+.sun-face-svg {
+    z-index: 1;
+}
+
+.moon-face-svg {
+    opacity: 0;
+    z-index: 2;
+    transform: scale(0.82);
+    transition: opacity 0.45s 0.08s, transform 0.45s 0.08s;
+}
+
+.cosmic-wheel.on .moon-face-svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ── Fate Label ── */
+.fate-label {
+    font-family: var(--font-c);
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    height: 22px;
+    width: 320px;
+}
+
+.fate-label span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: opacity 0.4s;
+}
+
+#la { opacity: 0; }
+
+.cosmic-wheel.on ~ .fate-label #lb { opacity: 0; }
+.cosmic-wheel.on ~ .fate-label #la { opacity: 1; }
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 480px) {
+    .scene {
+        overflow: hidden;
+        padding: 2rem 0.5rem;
+    }
+
+    .fate-label { width: min(320px, 90vw); }
+}
+
+/* scale wheel on phones — transform-origin center means we pull
+   each side inward by (380 * (1 - scale) / 2) via negative margins */
+@media (max-width: 440px) {
+    .cosmic-wheel {
+        transform: scale(0.87);
+        margin: -25px 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .cosmic-wheel {
+        transform: scale(0.78);
+        margin: -42px 0;
+    }
+}
+
+@media (max-width: 340px) {
+    .cosmic-wheel {
+        transform: scale(0.68);
+        margin: -61px 0;
+    }
+}
