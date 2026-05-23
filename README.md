@@ -8,7 +8,7 @@ This project demonstrates fundamental JavaScript concepts including DOM manipula
 
 ## 🌐 Live Preview
 
-Check out the live demo here: [https://comfy-fudge-3d0c76.netlify.app/](https://comfy-fudge-3d0c76.netlify.app/)
+Check out the live demo here: [illuminatehoroscope.netlify.app)
 
 ## ✨ Features
 
