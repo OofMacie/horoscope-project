@@ -1,4 +1,5 @@
-# horoscope-project
+# <h1>horoscope-project<h1>
+
 Horoscope Project from Codedex JavaScript basics, https://www.codedex.io/javascript/checkpoint-project/horoscope
 
 <img width="1622" height="926" alt="Horoscope" src="https://github.com/user-attachments/assets/76ebe35c-d823-476b-b993-576780ff18a7" />
